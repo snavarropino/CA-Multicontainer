@@ -1,0 +1,7 @@
+name: 20240303_PulumiContainerApps
+runtime: dotnet
+description: A multicontainer application deployed in Azure Container Apps
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: azure-csharp

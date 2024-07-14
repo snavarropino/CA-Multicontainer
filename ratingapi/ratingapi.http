@@ -1,0 +1,11 @@
+@ratingapi_HostAddress = http://localhost:5080
+
+GET {{ratingapi_HostAddress}}/rating/5
+Accept: application/json
+
+###
+
+POST {{ratingapi_HostAddress}}/rating/5?value=3
+Accept: application/json
+
+###
