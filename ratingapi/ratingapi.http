@@ -1,5 +1,11 @@
 @ratingapi_HostAddress = http://localhost:5080
 
+
+GET {{ratingapi_HostAddress}}/
+Accept: application/json
+
+###
+
 GET {{ratingapi_HostAddress}}/rating/5
 Accept: application/json
 
