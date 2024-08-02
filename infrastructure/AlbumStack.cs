@@ -196,22 +196,15 @@ public class AlbumStack : Stack
                         Env = {
                             new EnvironmentVarArgs {
                                 Name = "API_BASE_URL",
-                                Value = "http://ca-album-api",
+                                Value = albumApiUrl,
                             }
                         }
                     }
                 }
             }
         });
-
-        var uiFqdn = ui.Configuration.Apply(i => i.Ingress.Fqdn);
-        var uiUrl = Output.Format($"https://{uiFqdn}");
-
-        UiUrl = uiUrl;
         AlbumApiUrl = albumApiUrl;
         RatingApiUrl = ratingApiUrl;
-
-        Console.WriteLine("Prueba aqui hulio: "+UiUrl);
     }
 
     [Output]
