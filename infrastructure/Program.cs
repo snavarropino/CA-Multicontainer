@@ -1,11 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-using Deployment = Pulumi.Deployment;
+﻿using System.Threading.Tasks;
 
-class Program
+internal class Program
 {
-    private static Task<int> Main(string[] args)
+    private static Task<int> Main()
     {
-        return Deployment.RunAsync<AlbumStack>();
+        return Pulumi.Deployment.RunAsync<AlbumStack>();
     }
 }

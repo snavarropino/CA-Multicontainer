@@ -36,6 +36,5 @@ docker run -p 5080:5080 ratingapi
 
 Then you can reach the api at http://localhost:5080/
 
-> [!IMPORTANT]  
-> Execute rating api before album api
+
 

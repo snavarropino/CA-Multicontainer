@@ -1,9 +1,5 @@
-using Microsoft.AspNetCore.Http.HttpResults;
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -27,6 +23,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors();
 
+var ratings = new Dictionary<int, int>();
+
 app.MapGet("/", async context =>
 {
     await context.Response.WriteAsync("Hello from Rating Api!");
@@ -34,7 +32,11 @@ app.MapGet("/", async context =>
 
 app.MapGet("/rating/{id:int}", (int id) =>
 {
-    return Random.Shared.Next(1,6);
+    if (!ratings.ContainsKey(id))
+    {
+        ratings[id] = Random.Shared.Next(1, 6);
+    }
+    return ratings[id];
 })
 .WithName("GetRating")
 .WithOpenApi();
