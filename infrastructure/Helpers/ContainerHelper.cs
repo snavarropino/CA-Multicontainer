@@ -1,7 +1,7 @@
 ﻿using Pulumi;
 using Pulumi.AzureNative.ContainerRegistry;
 
-public class ContainerHelper
+internal class ContainerHelper
 {
     public Output<string?> AdminUsername { get; private set; }
     public Output<string?> AdminPassword { get; private set; }

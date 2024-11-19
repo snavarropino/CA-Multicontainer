@@ -2,7 +2,7 @@
 using Pulumi.AzureNative.Storage;
 using SkuName = Pulumi.AzureNative.Storage.SkuName;
 
-public class StorageAccountHelper
+internal class StorageAccountHelper
 {
     public Output<string> Key { get; private set;} = null!;
     public Output<string> ConnectionString { get; private set; } = null!;
@@ -11,6 +11,7 @@ public class StorageAccountHelper
     {
         var storageAccount = new StorageAccount(name, new()
         {
+            AccountName = name,
             ResourceGroupName = resourceGroupName,
             Kind = kind,
             Sku = new Pulumi.AzureNative.Storage.Inputs.SkuArgs
@@ -41,7 +42,7 @@ public class StorageAccountHelper
     private void LoadKeys(Output<string> resourceGroupName, Output<string> storageAccountName)
     {
         var storageAccountKeys = Output.Tuple(resourceGroupName, storageAccountName).Apply(names =>
-            Pulumi.AzureNative.Storage.ListStorageAccountKeys.Invoke(new Pulumi.AzureNative.Storage.ListStorageAccountKeysInvokeArgs()
+            ListStorageAccountKeys.Invoke(new ListStorageAccountKeysInvokeArgs()
             {
                 ResourceGroupName = names.Item1,
                 AccountName = names.Item2,

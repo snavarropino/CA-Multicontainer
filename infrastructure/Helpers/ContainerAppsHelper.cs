@@ -6,8 +6,7 @@ using Pulumi.Docker;
 using ContainerArgs = Pulumi.AzureNative.App.Inputs.ContainerArgs;
 using SecretArgs = Pulumi.AzureNative.App.Inputs.SecretArgs;
 
-
-public class ContainerAppsHelper
+internal class ContainerAppsHelper
 {
     public ManagedEnvironment CreateEnvironment(string name, Output<string> resourceGroupName)
     {
